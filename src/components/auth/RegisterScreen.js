@@ -4,6 +4,7 @@ import { useForm } from "../../hooks/useForm";
 import validator from "validator";
 import { useDispatch, useSelector } from "react-redux";
 import { setError, removeError } from "../../actions/ui";
+import { startRegisterEmailPasswordName } from "../../actions/auth";
 
 const RegisterScreen = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const RegisterScreen = () => {
 
   const [formValues, handleInputChange] = useForm({
     name: "Edgar",
-    email: "cesszea@gmail.com",
+    email: "eamzea@gmail.com",
     password: "cesarZEA210394",
     password2: "cesarZEA210394",
   });
@@ -22,9 +23,8 @@ const RegisterScreen = () => {
   const handleRegister = (e) => {
     e.preventDefault();
 
-    console.log("hello");
-
     if (isFormValid()) {
+      dispatch(startRegisterEmailPasswordName(email, password, name));
     }
   };
 
@@ -51,7 +51,10 @@ const RegisterScreen = () => {
   return (
     <>
       <h3 className="auth__title">Register</h3>
-      <form onSubmit={handleRegister}>
+      <form
+        onSubmit={handleRegister}
+        className="animate__animated animate__fadeIn animate__faster"
+      >
         {msgError && <div className="auth__alert-error">{msgError}</div>}
 
         <input
@@ -89,7 +92,7 @@ const RegisterScreen = () => {
           onChange={handleInputChange}
         />
         <button type="submit" className="btn btn-primary btn-block mb-5">
-          Login
+          Register
         </button>
 
         <Link to="/auth/login" className="link">

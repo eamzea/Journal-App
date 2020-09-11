@@ -54,17 +54,16 @@
   display: flex;
   justify-content: center;
   width: 75%;
-}
-
-.notes__image img {
+  background-position: center;
+  background-size: cover;
+  margin: 5px;
+  filter: opacity(0.75);
   border-radius: 5px;
-  box-shadow: 5px 5px 10px 5px black;
-  height: 100%;
 }
 
 .notes__container-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 25%;
 }

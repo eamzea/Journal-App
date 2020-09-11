@@ -52,16 +52,14 @@ const NoteScreen = () => {
         ></textarea>
       </div>
       <div className="notes__footer-container">
-        <div className="notes__image">
-          <img
-            src={
-              note.url
-                ? note.url
-                : "https://images.immediate.co.uk/production/volatile/sites/4/2018/08/untitled-0888e07.jpg?quality=90&resize=940%2C400"
-            }
-            alt="Space"
-          />
-        </div>
+        <div
+          className="notes__image"
+          style={{
+            backgroundImage: note.url
+              ? `url(${note.url})`
+              : "url(https://images.immediate.co.uk/production/volatile/sites/4/2018/08/untitled-0888e07.jpg?quality=90&resize=940%2C400)",
+          }}
+        ></div>
         <div className="notes__container-button">
           <button
             className="btn btn-danger"

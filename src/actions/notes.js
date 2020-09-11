@@ -104,10 +104,24 @@ export const startUploading = (file) => {
 
 export const startDeleting = (id) => {
   return async (dispatch, getState) => {
-    const uid = getState().auth.uid;
-    await db.doc(`${uid}/journal/notes/${id}`).delete();
+    const result = await Swal.fire({
+      title: "Do you want to delete this note?",
+      showDenyButton: true,
+      confirmButtonText: `Yes`,
+      denyButtonText: `No`,
+      allowOutsideClick: false,
+    });
 
-    dispatch(deleteNote(id));
+    if (result.isConfirmed) {
+      const uid = getState().auth.uid;
+      await db.doc(`${uid}/journal/notes/${id}`).delete();
+
+      dispatch(deleteNote(id));
+
+      Swal.fire("Note has been deleted!", "", "success");
+    } else if (result.isDenied) {
+      Swal.fire(`Note hasn't been deleted`, "", "info");
+    }
   };
 };
 

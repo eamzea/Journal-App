@@ -33,7 +33,7 @@ const RegisterScreen = () => {
       dispatch(setError("Name is Required"));
       return false;
     } else if (!validator.isEmail(email)) {
-      dispatch(setError("Email not valid"));
+      dispatch(setError("Email is not valid"));
       return false;
     } else if (password.length <= 5) {
       dispatch(setError("Password should be at least 6 characters"));

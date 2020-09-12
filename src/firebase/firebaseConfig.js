@@ -3,17 +3,19 @@ import "firebase/firestore";
 import "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDXc8D87JzfHt2MOGEW_im1u0qq8JyNeh4",
-  authDomain: "journalappreact.firebaseapp.com",
-  databaseURL: "https://journalappreact.firebaseio.com",
-  projectId: "journalappreact",
-  storageBucket: "journalappreact.appspot.com",
-  messagingSenderId: "1017990036855",
-  appId: "1:1017990036855:web:eb653b5c2b6613063b7572",
-  measurementId: "G-E1RRMVM56V",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASEURL,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID,
 };
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
+
+// Initialize Firebase
 
 const db = firebase.firestore();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();

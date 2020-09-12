@@ -16,10 +16,10 @@ export const fileUpload = async (file) => {
       const cloudResponse = await response.json();
       return cloudResponse.secure_url;
     } else {
-      throw await response.json();
+      return null;
     }
   } catch (e) {
     console.log(e);
-    throw e;
+    return null;
   }
 };
